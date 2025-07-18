@@ -1,0 +1,25 @@
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: --server-id=1 --log-bin=mysql-bin --binlog-format=row
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    depends_on:
+      - mysql-master
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command: --server-id=2 --relay-log=mysql-relay-bin

@@ -1,0 +1,8 @@
+[2025-07-18 21:40:40] Aguardando master e slave estarem prontos...
+mysqladmin: [Warning] Using a password on the command line interface can be insecure.
+mysqld is alive
+[2025-07-18 21:40:40] MySQL em mysql-master está pronto.
+mysqladmin: [Warning] Using a password on the command line interface can be insecure.
+mysqld is alive
+[2025-07-18 21:40:40] MySQL em mysql-slave está pronto.
+[2025-07-18 21:40:40] Aguardando 10 segundos extras para garantir que o MySQL está pronto para comandos SQL...
