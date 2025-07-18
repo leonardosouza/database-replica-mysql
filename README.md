@@ -31,10 +31,12 @@ Este projeto provisiona dois containers MySQL (master e slave) usando Docker Com
 
 1. **Configure o arquivo `.env` na raiz do projeto:**
    ```env
-   MYSQL_ROOT_PASSWORD=rootpass
-   MYSQL_DATABASE=mydb
-   MYSQL_USER=user
-   MYSQL_PASSWORD=pass
+   MYSQL_ROOT_PASSWORD=sua_senha_segura
+   MYSQL_DATABASE=seu_banco
+   MYSQL_USER=seu_usuario
+   MYSQL_PASSWORD=sua_senha_segura
+   REPL_USER=usuario_replicacao
+   REPL_PASSWORD=senha_replicacao
    ```
 
 2. **Suba os containers:**
@@ -65,12 +67,12 @@ O script `setup-replica.sh`:
 
 **Master:**
 ```sh
-docker exec -it mysql-master mysql -uroot -prootpass
+docker exec -it mysql-master mysql -uroot -p$MYSQL_ROOT_PASSWORD
 ```
 
 **Slave:**
 ```sh
-docker exec -it mysql-slave mysql -uroot -prootpass
+docker exec -it mysql-slave mysql -uroot -p$MYSQL_ROOT_PASSWORD
 ```
 
 ### Validar Bancos e Tabelas
